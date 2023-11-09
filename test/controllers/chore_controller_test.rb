@@ -12,7 +12,8 @@ class ChoreControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get show" do
-    get chore_show_url
+    chore = Chore.first
+    get chore_url(chore.id)
     assert_response :success
   end
 
