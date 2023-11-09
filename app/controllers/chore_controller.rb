@@ -12,6 +12,7 @@ class ChoreController < ApplicationController
     if @chore.save
       redirect_to @chore
     else
+      puts @chore.errors
       render :new, status: :unprocessable_entity
     end
   end
