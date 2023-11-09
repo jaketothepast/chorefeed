@@ -4,6 +4,7 @@ class ChoreController < ApplicationController
   end
 
   def index
+    @chores = Chore.all
   end
 
   def create
@@ -18,7 +19,7 @@ class ChoreController < ApplicationController
   end
 
   def show
-    @chores = Chore.all
+    @chore = Chore.find(params[:id])
   end
 
   def edit
