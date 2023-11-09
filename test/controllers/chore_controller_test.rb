@@ -2,17 +2,12 @@ require "test_helper"
 
 class ChoreControllerTest < ActionDispatch::IntegrationTest
   test "should get new" do
-    get chore_new_url
+    get new_chore_url
     assert_response :success
   end
 
   test "should get index" do
-    get chore_index_url
-    assert_response :success
-  end
-
-  test "should get create" do
-    get chore_create_url
+    get chore_url
     assert_response :success
   end
 

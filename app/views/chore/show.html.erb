@@ -1,5 +1,8 @@
 <h1>Chore#show</h1>
 <p>Find me in app/views/chore/show.html.erb</p>
 
-<h3><%= @chore.title %></h3>
-<p><%= @chore.desc %></p>
+<ul>
+<% @chores.each do |chore| %>
+    <li><%= chore.title %></li>
+<% end %>
+</ul>

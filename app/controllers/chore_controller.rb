@@ -18,7 +18,7 @@ class ChoreController < ApplicationController
   end
 
   def show
-    @chore = Chore.find(params[:id])
+    @chores = Chore.all
   end
 
   def edit
