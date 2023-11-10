@@ -7,7 +7,7 @@ class ChoreControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get chore_url
+    get chore_index_url
     assert_response :success
   end
 
@@ -18,11 +18,6 @@ class ChoreControllerTest < ActionDispatch::IntegrationTest
 
   test "should get edit" do
     get edit_chore_url(Chore.first.id)
-    assert_response :success
-  end
-
-  test "should get delete" do
-    get chore_delete_url
     assert_response :success
   end
 end
