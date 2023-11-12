@@ -23,6 +23,17 @@ class ChoreController < ApplicationController
   end
 
   def edit
+    @chore = Chore.find(params[:id])
+  end
+
+  def update
+    @chore = Chore.find(params[:id])
+
+    if @chore.update(chore_params)
+      redirect_to @chore
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def delete

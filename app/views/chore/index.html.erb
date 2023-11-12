@@ -3,6 +3,8 @@
 
 <ul>
 <% @chores.each do |chore| %>
-    <li><%= chore.title %></li>
+    <li><%= link_to chore.title, chore %></li>
 <% end %>
 </ul>
+
+<%= link_to "New Chore", new_chore_path %>
