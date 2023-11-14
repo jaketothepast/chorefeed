@@ -12,4 +12,20 @@ class ChoreTest < ActiveSupport::TestCase
     chore.desc = "desc"
     assert chore.save, "Saved the chore without a title"
   end
+
+  test "should only allow due date greater than now" do
+    chore = Chore.new
+    chore.title = 'hello'
+    chore.desc = 'desc'
+    chore.due_date = DateTime.now - 10
+    assert !chore.save, "Saved chore with old due date"
+  end
+
+  test "should allow due date greater than now" do
+    chore = Chore.new
+    chore.title = 'hello'
+    chore.desc = 'desc'
+    chore.due_date = DateTime.now + 10
+    assert chore.save, "Saved chore with old due date"
+  end
 end
