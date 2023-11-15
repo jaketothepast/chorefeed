@@ -10,30 +10,9 @@ class ChoresTest < ApplicationSystemTestCase
     assert_selector "h3", text: @chore.title
   end
 
-  # test "should create chore" do
-  #   visit chores_url
-  #   click_on "New chore"
-
-  #   click_on "Create Chore"
-
-  #   assert_text "Chore was successfully created"
-  #   click_on "Back"
-  # end
-
-  # test "should update Chore" do
-  #   visit chore_url(@chore)
-  #   click_on "Edit this chore", match: :first
-
-  #   click_on "Update Chore"
-
-  #   assert_text "Chore was successfully updated"
-  #   click_on "Back"
-  # end
-
-  # test "should destroy Chore" do
-  #   visit chore_url(@chore)
-  #   click_on "Destroy this chore", match: :first
-
-  #   assert_text "Chore was successfully destroyed"
-  # end
+  test "should complete chore" do
+    visit chore_index_url
+    first('.card a').click
+    assert_selector "h3", text: chores(:two).title
+  end
 end

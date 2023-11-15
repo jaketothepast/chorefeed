@@ -7,6 +7,7 @@ class Chore < ApplicationRecord
   validates :desc, presence: true
   validate :due_date_in_future, on: :create
   before_save :cannot_recomplete
+  before_update :cannot_recomplete
 
   def due_date_in_future
     errors.add(:due_date, 'newer than now') unless due_date.present? && due_date > DateTime.now
