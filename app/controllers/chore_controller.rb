@@ -1,4 +1,6 @@
 class ChoreController < ApplicationController
+  require 'date'
+
   def new
     @chore = Chore.new
   end
@@ -34,6 +36,11 @@ class ChoreController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def complete_chore
+    @chore = Chore.find(params[:id])
+    redirect_to chore_index_url if @chore.update(completed_at: DateTime.now)
   end
 
   def delete

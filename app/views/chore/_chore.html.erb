@@ -1,6 +1,9 @@
 
 <div class="chore card">
-    <h3><%= chore.title %></h3>
-    <p><%= chore.desc %></p>
-    <p>Due date <%= chore.due_date %>
+<h3><%= chore.title %></h3>
+<p>Desc: <%= chore.desc %> Due date <%= chore.due_date %>
+
+    <div class="action-row">
+        <%= link_to "Complete Chore", { controller: :chore, action: :complete_chore, id: chore.id }, method: :post %>
+    </div>
 </div>

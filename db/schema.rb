@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_14_190746) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_15_015405) do
   create_table "chores", force: :cascade do |t|
     t.string "title"
     t.text "desc"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "due_date"
+    t.datetime "completed_at"
   end
 
 end

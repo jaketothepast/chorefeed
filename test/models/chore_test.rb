@@ -10,6 +10,7 @@ class ChoreTest < ActiveSupport::TestCase
     chore = Chore.new
     chore.title = "Hello"
     chore.desc = "desc"
+    chore.due_date = DateTime.now + 10
     assert chore.save, "Saved the chore without a title"
   end
 
@@ -18,14 +19,19 @@ class ChoreTest < ActiveSupport::TestCase
     chore.title = 'hello'
     chore.desc = 'desc'
     chore.due_date = DateTime.now - 10
-    assert !chore.save, "Saved chore with old due date"
+    assert !chore.save
+    assert chore.errors[:due_date].first == 'newer than now'
   end
 
-  test "should allow due date greater than now" do
+  test 'cannot recomplete chore' do
     chore = Chore.new
     chore.title = 'hello'
     chore.desc = 'desc'
     chore.due_date = DateTime.now + 10
-    assert chore.save, "Saved chore with old due date"
+    chore.completed_at = DateTime.now
+    chore.save!
+
+    assert !chore.update(completed_at: DateTime.now)
+    assert chore.errors[:completed_at].first == 'already complete'
   end
 end
