@@ -1,8 +1,9 @@
-<h1>Chore#show</h1>
-<p>Find me in app/views/chore/show.html.erb</p>
 
+<%= turbo_frame_tag dom_id(@chore) do %>
 <ul>
-<li><%= @chore.title %></li>
+    <li><%= @chore.title %></li>
+    <li><%= link_to 'Edit this chore', edit_chore_path(@chore) %></li>
 </ul>
+<% end %>
 
 <%= link_to "All Chores", chore_index_path %>
