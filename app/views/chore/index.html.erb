@@ -7,4 +7,8 @@
   </div>
 <% end %>
 
-<%= link_to "New Chore", new_chore_path %>
+<%= turbo_frame_tag "new_chore" do %>
+  <div>
+    <%= link_to "New Chore", new_chore_path %>
+  </div>
+<% end %>
