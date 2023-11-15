@@ -6,14 +6,14 @@ class ChoreController < ApplicationController
   end
 
   def index
-    @chores = Chore.all
+    @chores = Chore.where(completed_at: nil)
   end
 
   def create
     @chore = Chore.new(chore_params)
 
     if @chore.save
-      redirect_to @chore
+      redirect_to chore_index_url
     else
       puts @chore.errors
       render :new, status: :unprocessable_entity
@@ -40,8 +40,15 @@ class ChoreController < ApplicationController
 
   def complete_chore
     @chore = Chore.find(params[:id])
-    redirect_to chore_index_url if @chore.update(completed_at: DateTime.now)
+    if @chore.update(completed_at: DateTime.now)
+      # This returns a response where the index is missing the latest completed version
+      @chores = Chore.where(completed_at: nil)
+      return render :index
+    end
+
+    redirect_to chore_index_url
   end
+
 
   def delete
   end
