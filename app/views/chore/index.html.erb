@@ -2,9 +2,9 @@
 <p>Find me in app/views/chore/index.html.erb</p>
 
 <ul>
-<% @chores.each do |chore| %>
-    <li><%= link_to chore.title, chore %></li>
-<% end %>
+  <% @chores.each do |chore| %>
+    <%= render partial: "chore", locals: {chore: chore} %>
+  <% end %>
 </ul>
 
 <%= link_to "New Chore", new_chore_path %>

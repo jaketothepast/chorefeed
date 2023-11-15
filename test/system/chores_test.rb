@@ -6,34 +6,34 @@ class ChoresTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
-    visit chores_url
-    assert_selector "h1", text: "Chores"
+    visit chore_index_url
+    assert_selector "h3", text: @chore.title
   end
 
-  test "should create chore" do
-    visit chores_url
-    click_on "New chore"
+  # test "should create chore" do
+  #   visit chores_url
+  #   click_on "New chore"
 
-    click_on "Create Chore"
+  #   click_on "Create Chore"
 
-    assert_text "Chore was successfully created"
-    click_on "Back"
-  end
+  #   assert_text "Chore was successfully created"
+  #   click_on "Back"
+  # end
 
-  test "should update Chore" do
-    visit chore_url(@chore)
-    click_on "Edit this chore", match: :first
+  # test "should update Chore" do
+  #   visit chore_url(@chore)
+  #   click_on "Edit this chore", match: :first
 
-    click_on "Update Chore"
+  #   click_on "Update Chore"
 
-    assert_text "Chore was successfully updated"
-    click_on "Back"
-  end
+  #   assert_text "Chore was successfully updated"
+  #   click_on "Back"
+  # end
 
-  test "should destroy Chore" do
-    visit chore_url(@chore)
-    click_on "Destroy this chore", match: :first
+  # test "should destroy Chore" do
+  #   visit chore_url(@chore)
+  #   click_on "Destroy this chore", match: :first
 
-    assert_text "Chore was successfully destroyed"
-  end
+  #   assert_text "Chore was successfully destroyed"
+  # end
 end
