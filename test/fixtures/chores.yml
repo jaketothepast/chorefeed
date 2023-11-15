@@ -3,7 +3,9 @@
 one:
   title: MyString
   desc: MyText
+  due_date: <%= (DateTime.now + 10).strftime('%Y-%m-%d %I:%M:%S') %>
 
 two:
   title: MyString
   desc: MyText
+  due_date: <%= (DateTime.now + 10).strftime('%Y-%m-%d %I:%M:%S') %>

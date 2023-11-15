@@ -24,13 +24,8 @@ class ChoreTest < ActiveSupport::TestCase
   end
 
   test 'cannot recomplete chore' do
-    chore = Chore.new
-    chore.title = 'hello'
-    chore.desc = 'desc'
-    chore.due_date = DateTime.now + 10
-    chore.completed_at = DateTime.now
-    chore.save!
-
+    chore = chores(:one)
+    chore.update(completed_at: DateTime.now)
     assert !chore.update(completed_at: DateTime.now)
     assert chore.errors[:completed_at].first == 'already complete'
   end
