@@ -12,7 +12,9 @@ class ChoresTest < ApplicationSystemTestCase
 
   test "should complete chore" do
     visit chore_index_url
-    first('.card a').click
+    within first('.chore') do
+      click_on 'Complete Chore'
+    end
     assert_selector "h3", text: chores(:two).title
   end
 
