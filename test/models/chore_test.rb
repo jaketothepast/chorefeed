@@ -40,7 +40,8 @@ class ChoreTest < ActiveSupport::TestCase
     assert chore.high_priority?
   end
 
-  test "priority score accurately reflects priorities" do
-    assert chores(:one).priority_score > chores(:two).priority_score
+  test "feed is priority sorted" do
+    feed = Chore.feed
+    assert feed[0].priority_score > feed[1].priority_score
   end
 end

@@ -23,4 +23,11 @@ class Chore < ApplicationRecord
   def priority_score
     return (priority.to_i * 10) + (DateTime.now - due_date.to_datetime).to_i
   end
+
+  ##
+  # Utilize our priority scoring algorithm to build a chore feed.
+  #
+  def self.feed
+    Chore.where(completed_at: nil).sort { |a, b| a.priority_score <=> b.priority_score }.reverse
+  end
 end
