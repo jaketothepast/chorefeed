@@ -3,6 +3,8 @@
 class Chore < ApplicationRecord
   require 'date'
 
+  enum priority: %i(low_priority, medium_priority, high_priority)
+
   validates :title, presence: true
   validates :desc, presence: true
   validate :due_date_in_future, on: :create

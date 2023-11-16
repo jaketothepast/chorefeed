@@ -31,4 +31,11 @@ class ChoreTest < ActiveSupport::TestCase
     assert chore.update(completed_at: DateTime.now)
     assert !chore.update(completed_at: DateTime.now)
   end
+
+  test 'high priority chore' do
+    chore = chores(:one)
+    chore.high_priority!
+
+    assert chore.high_priority?
+  end
 end

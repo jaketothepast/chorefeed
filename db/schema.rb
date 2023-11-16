@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_15_015405) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_16_120818) do
   create_table "chores", force: :cascade do |t|
     t.string "title"
     t.text "desc"
@@ -18,6 +18,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_15_015405) do
     t.datetime "updated_at", null: false
     t.datetime "due_date"
     t.datetime "completed_at"
+    t.integer "priority", default: 0
   end
 
 end
