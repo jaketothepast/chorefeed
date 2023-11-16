@@ -1,7 +1,8 @@
 <%= turbo_frame_tag "new_chore" do %>
   <%= form_for @chore, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
-    <%= f.text_field :title %>
-    <%= f.text_area :desc, size: "60x12" %>
+    <%= f.text_field :title, { :id => 'title' } %>
+    <%= f.text_area :desc, size: "60x12", id: 'desc' %>
+    <%= f.date_field :due_date, { :id => 'due_date' } %>
     <%= f.submit "Create" %>
   <% end %>
 <% end %>

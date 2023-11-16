@@ -1,0 +1,5 @@
+<div class="chore card" id="<%= dom_id(chore) %>">
+  <h3><%= link_to chore.title, chore_path(chore) %></h3>
+  <p>Desc: <%= chore.desc %> Due date <%= chore.due_date %></p>
+  <%= link_to "Complete Chore", { controller: :chore, action: :complete_chore, id: chore.id }, method: :get, remote: true %>
+</div>

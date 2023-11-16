@@ -11,12 +11,12 @@ class ChoreController < ApplicationController
 
   def create
     @chore = Chore.new(chore_params)
-
-    if @chore.save
-      redirect_to chore_index_url
-    else
-      puts @chore.errors
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @chore.save
+        format.turbo_stream
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -30,7 +30,6 @@ class ChoreController < ApplicationController
 
   def update
     @chore = Chore.find(params[:id])
-
     if @chore.update(chore_params)
       redirect_to @chore
     else
@@ -40,21 +39,20 @@ class ChoreController < ApplicationController
 
   def complete_chore
     @chore = Chore.find(params[:id])
+    @chores = Chore.where(completed_at: nil)
     if @chore.update(completed_at: DateTime.now)
-      # This returns a response where the index is missing the latest completed version
-      @chores = Chore.where(completed_at: nil)
-      return render :index
+      render turbo_stream: turbo_stream.remove(@chore)
+    else
+      render :index
     end
-
-    redirect_to chore_index_url
   end
-
 
   def delete
   end
 
   private
+
   def chore_params
-    params.require(:chore).permit(:title, :desc)
+    params.require(:chore).permit(:title, :desc, :due_date)
   end
 end

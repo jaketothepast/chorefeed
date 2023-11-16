@@ -1,14 +1,13 @@
 <h1>Chore#index</h1>
 <p>Find me in app/views/chore/index.html.erb</p>
 
-<%= turbo_frame_tag "chore_page" do %>
-  <div class="column todo">
-  <%= render partial: "chore", collection: @chores %>
-  </div>
-<% end %>
-
 <%= turbo_frame_tag "new_chore" do %>
   <div>
     <%= link_to "New Chore", new_chore_path %>
   </div>
 <% end %>
+
+<div class="column todo" id="chores">
+  <%= render @chores %>
+</div>
+
