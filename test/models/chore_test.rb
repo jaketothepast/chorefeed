@@ -27,15 +27,20 @@ class ChoreTest < ActiveSupport::TestCase
     chore = Chore.new
     chore.title = 'hello'
     chore.desc = 'desc'
-    chore.due_date = DateTime.now - 10
-    assert chore.update(completed_at: DateTime.now)
-    assert !chore.update(completed_at: DateTime.now)
+    chore.due_date = DateTime.now + 10
+    assert chore.save
+    assert chore.update(completed_at: DateTime.now + 10)
+    assert !chore.update(completed_at: DateTime.now + 10)
   end
 
   test 'high priority chore' do
     chore = chores(:one)
-    chore.high_priority!
+    chore.priority = :high_priority
 
     assert chore.high_priority?
+  end
+
+  test "priority score accurately reflects priorities" do
+    assert chores(:one).priority_score > chores(:two).priority_score
   end
 end

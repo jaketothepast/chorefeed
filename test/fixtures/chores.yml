@@ -9,5 +9,5 @@ one:
 two:
   title: MyString
   desc: MyText
-  due_date: <%= (DateTime.now + 10).strftime('%Y-%m-%d %I:%M:%S') %>
+  due_date: <%= (DateTime.now + 30).strftime('%Y-%m-%d %I:%M:%S') %>
   priority: 0
