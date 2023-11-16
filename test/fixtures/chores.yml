@@ -1,7 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
+  title: First Chore
   desc: MyText
   due_date: <%= (DateTime.now + 10).strftime('%Y-%m-%d %I:%M:%S') %>
   priority: 0

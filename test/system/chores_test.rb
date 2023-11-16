@@ -32,5 +32,13 @@ class ChoresTest < ApplicationSystemTestCase
 
     assert_text 'New Chore Title'
     assert_text 'Chore Description'
+    assert_selector 'h3', count: 3
+  end
+
+  test "feed is priority sorted" do
+    visit chore_index_url
+    within first('.chore') do
+      assert_text chores(:one).title
+    end
   end
 end

@@ -6,7 +6,7 @@ class ChoreController < ApplicationController
   end
 
   def index
-    @chores = Chore.where(completed_at: nil)
+    @chores = Chore.feed
   end
 
   def create
@@ -39,7 +39,7 @@ class ChoreController < ApplicationController
 
   def complete_chore
     @chore = Chore.find(params[:id])
-    @chores = Chore.where(completed_at: nil)
+    @chores = Chore.feed
     if @chore.update(completed_at: DateTime.now)
       render turbo_stream: turbo_stream.remove(@chore)
     else
